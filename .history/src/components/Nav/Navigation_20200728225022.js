@@ -1,0 +1,68 @@
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import {connect} from 'react-redux'
+class Navigation extends Component{
+    render() {
+        return (<div>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light mb-3">
+                <a className="navbar-brand" href="#">Bank Management System</a>
+                <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                    <span className="navbar-toggler-icon"></span>
+                </button>
+
+                {/* <div className="collapse navbar-collapse" id="navbarTogglerDemo02"> */}
+                <div className="" id="navbarTogglerDemo02">
+                {this.props.isLoggedIn==true?"True":"Fasle"}
+                    <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
+                        {
+
+                            !this.props.isLoggedIn &&
+                            <li className="nav-item active">
+                                <Link className="nav-link" to="/register">Register</Link>
+                            </li>
+                        }
+                        {
+                            !this.props.isLoggedIn &&
+                            <li className="nav-item">
+                                {/* <a className="nav-link" href="#">Link</a> */}
+                                <Link className="nav-link" to="/login">LogIn</Link>
+                            </li>
+                        }
+                        {
+                            this.props.isLoggedIn &&
+                            <li className="nav-item">
+                                {/* <a className="nav-link" href="#">Disabled</a> */}
+                                <Link className="nav-link" to="/loan">Apply Loan</Link>
+                            </li>
+                        }
+                        {
+                            this.props.isLoggedIn &&
+
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/edit">Edit Profile</Link>
+
+                            </li>
+                        }
+                        {this.props.isLoggedIn &&
+                            <li className="nav-item">
+                                <Link className="nav-link" to="/logout">Log Out</Link>
+
+                            </li>
+                        }
+                    </ul>
+                    {/* <form className="form-inline my-2 my-lg-0"> */}
+                    {/* <input className="form-control mr-sm-2" type="search" placeholder="Search"> */}
+                    {/* <button className="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> */}
+                    {/* </form> */}
+                </div>
+            </nav>
+        </div>)
+    }
+}
+const mapStateToProps = state => {
+    return {
+        isLoggedIn: state.loggedIn
+    }
+}
+
+export default connect(mapStateToProps)(Navigation);

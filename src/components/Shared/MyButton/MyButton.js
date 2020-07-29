@@ -11,7 +11,7 @@ class MyButton extends Component {
         clicked:() => console.log("clicked "),
         label:"Button Label",
         value: "",
-        classes: "btn btn-primary"
+        classes: "btn btn-secondary"
     }
     constructor(props) {
         super(props);

@@ -47,9 +47,7 @@ class InputField extends Component {
     }
     render() {
         return (
-            // <div className="container">
-            // <div className="row">
-            <div className="form-group form-inline" >
+            <div className="form-group form-inline ">
                 {
                     (this.props.errors||[]).length > 0 &&
                     <div className="error-div">
@@ -57,12 +55,12 @@ class InputField extends Component {
                         </div>
                 
                 }
-               
-                <div className="col-2">
-                    <label className="label label-default"  htmlFor={this.props.id}>{this.props.Label}</label>
+                <div className="form-group">
+                <div className="col-3">
+                        <label className="label label-primary "  htmlFor={this.props.id}>{this.props.Label}</label>
 
                 </div>
-                <div className="col-2">
+                <div className="col-3">
                     {this.props.type=="text" && 
                         <input className="form-control" name={this.props.name} id={this.props.id} type={this.props.type} onChange={
                             // (this.props.changes) || ((e)=>{this.setState({value:e.target.value})})
@@ -86,9 +84,9 @@ class InputField extends Component {
 
                     }
                     </div>
-                    </div>
-                    // </div>
-            // </div>
+                </div>
+            </div>
+                  
         )
     }
 }

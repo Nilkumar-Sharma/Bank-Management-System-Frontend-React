@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Redirect} from 'react-router-dom'
+import {Redirect,withRouter} from 'react-router-dom'
 import { connect } from 'react-redux'
 import * as auth from '../../Services/Authentication'
 import history from '../../history/history'
@@ -26,12 +26,13 @@ class LogOut extends Component{
         
     }
     componentDidMount() {
+        history.push("/")
         console.log(this.props.loggedIn)
         setTimeout(() => {
             auth.logOut();
             this.props.logMeOut();
             console.log("loggout")
-        }, 3000);
+        }, 100);
         
     }
     componentDidUpdate() {
@@ -50,4 +51,4 @@ const mapStateToProps = (state) => {
         loggedIn: state.loggedIn
     }
 }
-export default connect(mapStateToProps,dispatch)(LogOut);
+export default withRouter(connect(mapStateToProps,dispatch)(LogOut));

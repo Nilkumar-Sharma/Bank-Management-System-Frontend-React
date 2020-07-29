@@ -15,14 +15,23 @@ import {connect} from 'react-redux'
 
 */
 class LogIn extends Component{
+    validators = [];
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+        }
+        // this.validators = [(event) => {
+        //     if (event.target.value < 4) {
+        //         return "Min Length 4 is required"
+        //     }
+        // }]
+
     }
 
-    handleChange = (event) => {
+    handleChange = (event,error) => {
     
         this.setState({ [event.target.name]: event.target.value });
+        console.log(error)
     }
     logInHandler = () => {
         if (auth.logIn(this.state)) {
@@ -34,20 +43,31 @@ class LogIn extends Component{
  
     render() {
         return (<div>
-            status {this.props.loggedIn==true?'YEsy':'no'}
-            LogIn Page
+            {/* status {this.props.loggedIn==true?'YEsy':'no'} */}
+           
+          
             {this.props.loggedIn &&
                 <div>
-                ALredy logged 
+                Already logged in 
                 </div>
                 
         }
             { !this.props.loggedIn &&
-                <div className="container col-offset-2 ">
-                    <InputField Label="Username" name="UserName" changes={this.handleChange}></InputField>
+                <div className="container  mt-5 mb-5  border clearfix shadow">
+                <h5 className="mb-5">Log In Page
+            </h5> 
+                <div className="row justify-content-center mt-3">
+                    <InputField Label="Username" name="UserName" validators={this.validators} changes={this.handleChange}></InputField>
+                </div>
+                <div className="row justify-content-center">
+
                     <InputField Label="Password" name="Password" changes={this.handleChange}></InputField>
+                </div>
+                <div className=" float-right mb-4">
                     <MyButton label="Log In" clicked={this.logInHandler}></MyButton>
                 </div>
+                </div>
+
             }
 
             </div>)

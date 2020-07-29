@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import InputField from '../Shared/InputField/InputField'
-import style from './Loan.module.scss';
+import './Loan.scss';
 import MyButton from '../Shared/MyButton/MyButton'
 /** 
 As a Customer, I should be able to login so that I can apply and view the loan details 
@@ -21,19 +21,36 @@ class Loan extends Component{
     }
     render() {
         return (<div>
-            Loan Page
-            <div className="container">
-                <div className="card pt-2">
+            <div className="container border shadow">
+                <div className="header">
+                   Apply Loan
 
 
-                {/* <InputField Label="Name"></InputField> */}
+                </div>
+                <div className="row mt-5">
+                <div className="element1 col-lg-6 col-md-5">
                 <InputField type="select" options={["Student Loans","Car Loans","Appliance Loan"]}  Label="Loan Type" name="Loan Type" changes={this.handleChange}></InputField>
+                </div>
+                <div className="element1 col-lg-6 col-md-5">
+
                 <InputField Label="Loan Amount" name="Loan Amount" changes={this.handleChange}></InputField>
+                </div>
+                <div className="element1 col-lg-6 col-md-5">
+
                 <InputField Label="Date" name="Date" changes={this.handleChange}></InputField>
+                </div>
+                <div className="element1 col-lg-6 col-md-5">
+
                 <InputField Label="Rate of Interest" name=" Rate of Interest" changes={this.handleChange}></InputField>
-                <InputField Label="Duration of Loan" name="Duration of Loan" changes={this.handleChange}></InputField>
-               
-                <MyButton label="Apply" clicked={this.clickHandler}></MyButton>
+                </div>
+                <div className="element1 col-lg-6 col-md-5">
+
+                        <InputField Label="Loan Duration" name="Loan Duration" changes={this.handleChange}></InputField>
+           </div>
+
+<div className="button1">
+                        <MyButton  label="Apply" clicked={this.clickHandler}></MyButton>
+                        </div>
                 </div>
 
                 </div>

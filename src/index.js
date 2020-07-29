@@ -4,8 +4,8 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { Provider } from 'react-redux'
-import { createStore } from 'redux'
-import rootReducer from './store/reducer'
+import { createStore, compose, applyMiddleware } from 'redux'
+import rootReducer from './store/reducers/reducer'
 import { BrowserRouter, Switch,Route,Link } from 'react-router-dom';
 import Register from './components/Register/Register'
 import { createBrowserHistory } from 'history';
@@ -15,43 +15,37 @@ import Loan from './components/Loan/Loan'
 import UpdateProfile from './components/Profile/UpdateProfile';
 import LogOut from './components/LogOut/LogOut';
 import Navigation from './components/Nav/Navigation'
-
-const store = createStore(rootReducer);
+import customHistory from './history/history'
+import Alert from './components/Alert/alert';
+import createSagaMiddleware from 'redux-saga'
+import { watchAuth } from './store/saga/index'
+import Footer from './components/Footer/Footer'
 // store.subscribe(_=>console.log(store.getState()))
-const customHistory = createBrowserHistory();
-console.log(customHistory)
+// const customHistory = createBrowserHistory();
+// console.log(customHistory)
+const logger = store => {
+  return next => {
+    return action => {
+      console.log("Middleware ",action)
+      const result =next(action)
+      console.log("MiddleWare",store.getState())
+      return result
+      
+    }
+  
+}
+}
+const sagaMiddleware = createSagaMiddleware()
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware,logger)));
+sagaMiddleware.run(watchAuth)
+store.dispatch({ type:'SHOW_ALERT_INITIATE',payload:{typ:'show',message:'From redux saaa'}})
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>
       <BrowserRouter history={customHistory}>
         <Navigation></Navigation>
-       
-        {/* <nav className="navbar navbar-expand-lg navbar-light bg-light ">
-          <a className="navbar-brand" href="#">
-            <img src="/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30" className="d-inline-block align-top" alt=""></img>
-              Bank Management System
-  </a>
-
-          <ul className="navbar-nav  mr-auto">
-          <li className="nav-item mr-2">
-            <Link to="/">App</Link>
-            </li>
-            <li className="nav-item mr-2">
-            <Link to="/register">Register</Link>
-          </li>
-            <li className="nav-item mr-2">
-            <Link to="/login">LogIn</Link>
-            </li>
-            <li className="nav-item mr-2">
-              <Link to="/loan">Apply Loan</Link>
-            </li>
-            <li className="nav-item mr-2">
-              <Link to="/edit">Edit Profile</Link>
-            </li>
-          </ul>
-        </nav> */}
-       
-        
+        <Alert></Alert>
       {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
       <Switch>
@@ -73,8 +67,10 @@ ReactDOM.render(
           <Route path="/logout">
            <LogOut></LogOut>
           </Route>
-      </Switch>
+        </Switch>
+        <Footer></Footer>
       </BrowserRouter>
+
     </React.StrictMode>
   
   </Provider>,
@@ -85,5 +81,3 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
-
-export default customHistory;

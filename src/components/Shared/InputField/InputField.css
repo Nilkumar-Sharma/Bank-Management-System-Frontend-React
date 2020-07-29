@@ -1,5 +1,16 @@
 label{
-    /* width: 10px; */
+    /* min-width: 100px; */
+    /* border-style:dashed */
     /* margin-left: 50px; */
+    /* padding-right: 100px; */
+    /* min-width: 30 px; */
+
 }
-/*  */
+input,select{
+    min-width: 150px !important;
+}
+select{
+    /* margin-left: 50px; */
+    margin-left: 20px !important;
+    min-width: ;
+}

@@ -67,7 +67,7 @@ class LogIn extends Component{
                 </div>
                 <div className="row justify-content-center">
 
-                    <InputField Label="Password" name="Password" changes={this.handleChange}></InputField>
+                    <InputField Label="Password" name="Password" validators={this.validators} changes={this.handleChange}></InputField>
                 </div>
                 <div className=" float-right mb-4">
                     <MyButton label="Log In" clicked={this.logInHandler}></MyButton>

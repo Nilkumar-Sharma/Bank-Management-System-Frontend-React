@@ -14,14 +14,11 @@ import customHistory from '../../App';
  * On clicking logout the session should be invalidated and login page must be displayed Capture the 
  * details like Name, Username, Password, Address, State, Country, Email Address, PAN, Contact No, DOB, 
  * Account Type etc
-
 */
 class Register extends Component {
-
     handleChange = (event) => {
         // let history = useHistory();
         // console.log(history )
-
         this.setState({ [event.target.name]: event.target.value });
     }
     registrationHandler = () => {
@@ -30,10 +27,10 @@ class Register extends Component {
             // TODO
             //alert or redirect
         } else {
-
         }
     }
     render() {
+        try{
         return (<div>
             <div className="container mt-5 mb-5  border clearfix shadow">
                 <div className="header1">
@@ -68,18 +65,19 @@ class Register extends Component {
                 </div>
                 <div className="input1">
                     <InputField Label="Account Type" name=" Type" changes={this.handleChange}></InputField>
-
                 </div>
                 <div className="input1">
                     <InputField Label="Dob" name="Dob" changes={this.handleChange}></InputField>
                 </div>
                 <div className="button1"> 
                     <MyButton label="Register" name="Register" clicked={this.registrationHandler}></MyButton>
-
                 </div>
             </div>
             </div>
             )
+        } catch (error) {
+            console.log(error)
+        return (<div>SomeError has Happened,Contact Admin</div>) }
         }
 }
 const mapStateToProps = (state) => {

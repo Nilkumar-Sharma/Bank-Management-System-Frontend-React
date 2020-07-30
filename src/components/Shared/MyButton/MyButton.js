@@ -16,12 +16,13 @@ class MyButton extends Component {
     constructor(props) {
         super(props);
         console.log(this.props)
-
     }
     render() {
+        try{
         return <button className={this.props.classes} onClick={this.props.clicked} value={this.props.value} >{this.props.label}</button>
-    }
-
+        } catch (error) {
+            console.log(error)
+        return (<div>SomeError has Happened,Contact Admin</div>) }
+        }
 } 
-
 export default MyButton;

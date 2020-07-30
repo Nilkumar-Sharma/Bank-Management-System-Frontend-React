@@ -19,5 +19,4 @@ const register = () => {
 const logOut = () => {
     return localStorage.removeItem("BMS")
 }   
-
 export { logIn,isLoggedInBefore,register,logOut };

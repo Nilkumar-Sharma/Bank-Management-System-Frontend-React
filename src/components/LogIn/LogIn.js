@@ -14,7 +14,6 @@ import * as validators from '../Shared/Validators'
  * On clicking logout the session should be invalidated and login page must be displayed Capture the 
  * details like Name, Username, Password, Address, State, Country, Email Address, PAN, Contact No, DOB, 
  * Account Type etc
-
 */
 class LogIn extends Component{
     validators = [validators.HOCrequired("USername is required"),(value)=>(value.trim().length>5?true:"Minimum Length is 5")];
@@ -27,9 +26,7 @@ class LogIn extends Component{
         //         return "Min Length 4 is required"
         //     }
         // }]
-
     }
-
     handleChange = (event,error) => {
     
         this.setState({ [event.target.name]: event.target.value });
@@ -45,6 +42,7 @@ class LogIn extends Component{
     }
  
     render() {
+        try{
         return (<div>
             {/* status {this.props.loggedIn==true?'YEsy':'no'} */}
            
@@ -54,7 +52,6 @@ class LogIn extends Component{
                 <div className="alreadyLoggedIn">
                     Already logged in 
                 </div>
-
                 </div>
                 
         }
@@ -66,17 +63,17 @@ class LogIn extends Component{
                     <InputField Label="Username" name="UserName" validators={this.validators} changes={this.handleChange}></InputField>
                 </div>
                 <div className="row justify-content-center">
-
                     <InputField Label="Password" name="Password" validators={this.validators} changes={this.handleChange}></InputField>
                 </div>
                 <div className=" float-right mb-4">
                     <MyButton label="Log In" clicked={this.logInHandler}></MyButton>
                 </div>
                 </div>
-
             }
-
             </div>)
+        } catch (error) {
+            console.log(error)
+        return (<div>SomeError has Happened,Contact Admin</div>) }
         }
 }
 const mapStateToProps = (state) => {
@@ -84,7 +81,6 @@ const mapStateToProps = (state) => {
     return {
         loggedIn:state.loggedIn
     }
-
 }
 const dispatch = (dispatch) => {
     return {
@@ -98,5 +94,4 @@ const dispatch = (dispatch) => {
     
     }
 }
-
 export default connect(mapStateToProps,dispatch)(LogIn);

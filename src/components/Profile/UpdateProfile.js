@@ -32,14 +32,13 @@ class UpdateProfile extends Component{
     handleUpdateClick = ()=>{
         this.props.onChangeProfile(this.state);
     }
-
     render() {
+        try{
         return (<div>
             {this.state.Name}
             <div className="container border shadow pr-5">
                 <div className="header">
                     Update Profile Page
-
                 </div>
                 <div className="row mt-5 ">
                 <div className="element1 col-4">
@@ -55,7 +54,6 @@ class UpdateProfile extends Component{
             <InputField Label="State" name="State" value={this.props.user.State}   changes={this.handleInputField}></InputField>
             </div>
             <div className="element1 col-4">
-
             <InputField Label="Country" name="Country" value={this.props.user.Country}    changes={this.handleInputField}></InputField>
             </div>
             <div className="element1 col-4">
@@ -74,7 +72,10 @@ class UpdateProfile extends Component{
                         <MyButton label="Update" clicked={this.handleUpdateClick} ></MyButton>
                     </div></div>
             </div>
-        </div>)
+            </div>)
+        } catch (error) {
+            console.log(error)
+        return (<div>SomeError has Happened,Contact Admin</div>) }
     }
 }
 const mapStateToProps = state => {
@@ -86,7 +87,6 @@ const mapStateToProps = state => {
 const mapPropToState = dispatch => {
     return {
         onChangeProfile: (payload) => dispatch({ type: actionTypes.UPDATE_PROFILE_INITIATE, payload })
-
     }
 }
 export default  connect(mapStateToProps,mapPropToState)(UpdateProfile);

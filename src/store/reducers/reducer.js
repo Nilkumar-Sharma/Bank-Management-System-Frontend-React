@@ -18,7 +18,6 @@ const initialState = {
     },
     loans:[]
 };
-
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.LOAN_APPLY_SUCCESS:

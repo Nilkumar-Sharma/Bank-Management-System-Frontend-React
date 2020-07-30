@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './InputField.css'
-
 class InputField extends Component {
     static defaultProps = {
         type: "text",
@@ -27,7 +26,6 @@ class InputField extends Component {
      handleChange(event) {
         //run validation and return error if any else error is null
          this.setState({ value: event.target.value,isDirty:true });
-
         this.setState({ errors: [] }, () => {
             let err = []
             this.props.validators.map(x => {
@@ -42,14 +40,13 @@ class InputField extends Component {
             })
             this.setState({ errors: err },  ()=>{
                 console.log(this.state)
-
                 })
-
         })
         this.props.changes(event,this.state.errors)
         // console.log(this.state)
     }
     render() {
+        try{
         return (
             <div className="class1">
                 {
@@ -62,7 +59,6 @@ class InputField extends Component {
                 {/* <div className=""> */}
                 <div className="col">
                         <label className="label label-primary "  htmlFor={this.props.id}>{this.props.Label}</label>
-
                 </div>
                 <div className="col">
                     {this.props.type=="text" && 
@@ -78,7 +74,6 @@ class InputField extends Component {
                         this.props.type == "select" &&
                         <div>
                             <select className="" name={this.props.name} onChange={(event)=>this.handleChange(event)}>
-
                                 {this.props.options.map(x =>
                                     <option value={x} key={x}>{x}</option>
                                     )}
@@ -87,7 +82,6 @@ class InputField extends Component {
                                 {/* <option value="C">Cranberry</option> */}
                             </select>
                             </div>
-
                         }
                        
                     </div>
@@ -122,7 +116,10 @@ class InputField extends Component {
                 </div>
             // </div>
                   
-        )
+            )
+        } catch (error) {
+            console.log(error)
+        return (<div>SomeError has Happened,Contact Admin</div>) }
     }
 }
 export default InputField;

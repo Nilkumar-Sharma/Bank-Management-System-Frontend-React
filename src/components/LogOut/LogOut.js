@@ -7,6 +7,7 @@ class LogOut extends Component{
   
     render() {
         // return()
+        try{
         return (<div>
             {this.props.loggedIn && <div className="container shadow justify-content-center">Logging you out
         </div>
@@ -18,7 +19,10 @@ class LogOut extends Component{
         </div>
                 }
         </div>
-        )
+            )
+        } catch (error) {
+            console.log(error)
+        }
         // return <Redirect to='/login' />
     }
     constructor(props) {
@@ -34,11 +38,12 @@ class LogOut extends Component{
         
     }
     componentDidMount() {
-        history.push("/")
+       
         console.log(this.props.loggedIn)
         setTimeout(() => {
             auth.logOut();
             this.props.logMeOut();
+            history.push("/")
             console.log("loggout")
         }, 100);
         

@@ -9,9 +9,6 @@ function App() {
      Bank Management System
     {/* <Counter></Counter> */}
     </div>
-
-
   );
 }
-
 export default App;

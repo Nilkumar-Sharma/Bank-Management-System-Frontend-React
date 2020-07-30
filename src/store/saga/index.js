@@ -7,36 +7,28 @@ export function* watchAuth() {
     yield takeEvery(actionTypes.UPDATE_PROFILE_INITIATE, updateProfile);
     yield takeEvery(actionTypes.LOAN_APPLY_INITIATE, applyLoan);
 
-
 }
-
 function* checkAlert(payload){
     yield put({ type: actionTypes.SHOW_ALERT_SHOW,payload:payload })
     yield delay(3 * 1000);
     yield put({ type: actionTypes.SHOW_ALERT_HIDE})
 }
-
 function* authenticateUser(payload) {
     yield payload = payload.payload;
     yield console.log(payload)
     // // yield 
     try {
         // TODO api calls here
-        if (payload.UserName === "customer" && payload.Password === "customer") {
-
+        if (payload.UserName.trim() === "customer" && payload.Password.trim() === "customer") {
             yield localStorage.setItem("BMS", payload);
             yield put({ type: 'SHOW_ALERT_INITIATE', payload: { typ: 'success', message: 'Logged In Successfully' } })
             yield put({ type: actionTypes.AUTH_SUCCESS })
-
         } else {
             yield put({ type: 'SHOW_ALERT_INITIATE', payload: { typ: 'danger', message: 'Invalid Credentials' } })
             yield({ type: actionTypes.AUTH_FAILED })
         }
-
     } catch (error) {
-
     }
-
 }
 function* updateProfile(action) {
     yield console.log(action)
@@ -59,7 +51,6 @@ function* applyLoan(action) {
     } catch (err) {
         yield put({ type: actionTypes.LOAN_APPLY_ERROR })
     }
-
 
     
 }

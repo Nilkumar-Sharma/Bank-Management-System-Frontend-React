@@ -9,6 +9,7 @@ class Counter extends Component{
         }
     }
     render() {
+        try{
         return (
             <div>
                 Counter state:
@@ -17,14 +18,16 @@ class Counter extends Component{
             <MyButton label="Increment" clicked={this.props.onIncrementCounter}></MyButton>
             <MyButton label="Decrement" clicked={this.props.onDecrementCounter}></MyButton>
             </div>
-        )
+            )
+        } catch (error) {
+            console.log(error)
+        return (<div>SomeError has Happened,Contact Admin</div>) }
     }
     
 }
 const mapStateToProps = (state) => {
     // console.log(state)
     return { ctr: state.counter }
-
 }
 const mapDispatchToState = (dispatch) => {
     return {
@@ -36,6 +39,4 @@ const mapDispatchToState = (dispatch) => {
         }
     }
 }
-
-
 export default connect(mapStateToProps,mapDispatchToState)(Counter);

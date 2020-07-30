@@ -7,4 +7,3 @@ const alert = (type, message) => {
     
 }
 
-

@@ -6,7 +6,6 @@ function* authenticateUser(action) {
             alert("Logged In from redux saga");
             localStorage.setItem("BMS", action);
             yeild({ type: AUTH_SUCESS })
-
         } else {
             alert("Invalid Crednetials")
             // return false;

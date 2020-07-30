@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import LogIn from '.././components/LogIn/LogIn';
 import Loan from '.././components/Loan/Loan'
 import UpdateProfile from '.././components/Profile/UpdateProfile';
-// import App from '../App/App';
+import App from '../App/App';
 import LogOut from '.././components/LogOut/LogOut';
 import Register from '.././components/Register/Register'
 import { Switch, Route} from 'react-router-dom';
@@ -16,7 +16,7 @@ class Routes extends Component {
             renders the first one that matches the current URL. */}
                 <Switch>
                     <Route exact path="/">
-                        {/* <App /> */}
+                        <App />
                     </Route>
                     <Route exact path="/register">
                         <Register />

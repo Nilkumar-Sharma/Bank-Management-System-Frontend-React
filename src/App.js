@@ -5,9 +5,7 @@ import Counter from './Counter/Counter'
 function App() {
   return (
     <div className="App">
-     
      Bank Management System
-    {/* <Counter></Counter> */}
     </div>
   );
 }

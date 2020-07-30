@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import { Link,withRouter } from 'react-router-dom'
 import {connect} from 'react-redux'
+
 class Navigation extends Component{
     render() {
               // TODO
         try{
         return (<div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light mb-3">
-                <a className="navbar-brand" href="#">Bank Management System</a>
+                <Link className="navbar-brand" to='/'>Bank Management System</Link>
                 {/* <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button> */}
@@ -43,9 +44,15 @@ class Navigation extends Component{
                         }
                         {this.props.isLoggedIn &&
                             <li className="nav-item">
+                                <Link className="nav-link" to="/viewloan">View Loan</Link>
+                            </li>
+                        }
+                        {this.props.isLoggedIn &&
+                            <li className="nav-item">
                                 <Link className="nav-link" to="/logout">Log Out</Link>
                             </li>
                         }
+                       
                     </ul>
                     {/* <form className="form-inline my-2 my-lg-0"> */}
                     {/* <input className="form-control mr-sm-2" type="search" placeholder="Search"> */}

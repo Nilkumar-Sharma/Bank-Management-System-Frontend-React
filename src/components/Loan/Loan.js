@@ -26,12 +26,12 @@ class Loan extends Component{
     render() {
         try{
         return (<div>
-            <div className="container border shadow">
+            <div className="container border shadow container1 ">
                 <div className="header">
                    Apply Loan
 
                 </div>
-                <div className="row mt-5">
+                <div className="row mt-5 row-container ">
                 <div className="element1 col-lg-6 col-md-5">
                 <InputField type="select" options={["Student Loans","Car Loans","Appliance Loan"]}  Label="Type" name="Type" changes={this.handleChange}></InputField>
                 </div>
@@ -47,7 +47,7 @@ class Loan extends Component{
                 <div className="element1 col-lg-6 col-md-5">
                         <InputField Label="Duration" name="Duration" changes={this.handleChange}></InputField>
            </div>
-<div className="button1 offset-12 col-12">
+<div className="button1">
                         <MyButton  label="Apply" clicked={this.clickHandler}></MyButton>
                         </div>
                 </div>

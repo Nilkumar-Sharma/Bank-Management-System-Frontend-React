@@ -1,5 +1,5 @@
     const logIn=(paylaod)=>{
-        if (paylaod.UserName == "customer" && paylaod.Password == "customer") {
+        if (paylaod.UserName === "customer" && paylaod.Password === "customer") {
             alert("Logged In");
             localStorage.setItem("BMS", paylaod);
             return true;

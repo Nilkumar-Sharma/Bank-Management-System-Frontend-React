@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import InputField from '../Shared/InputField/InputField'
 import  './LogIn.scss';
 import MyButton from '../Shared/MyButton/MyButton'
-import * as auth from '../../Services/Authentication'
 import { connect } from 'react-redux'
 import * as actionTypes from '../../store/actions/actionTypes'
 import * as validators from '../Shared/Validators'
@@ -48,7 +47,7 @@ class LogIn extends Component{
            
           
             {this.props.loggedIn &&
-                <div className="container  mt-5 mb-5  border clearfix shadow ">
+                <div className="log-in-container  mt-5 mb-5  border clearfix shadow ">
                 <div className="alreadyLoggedIn">
                     Already logged in 
                 </div>
@@ -65,7 +64,10 @@ class LogIn extends Component{
                 <div className="row justify-content-center">
                     <InputField Label="Password" name="Password" validators={this.validators} changes={this.handleChange}></InputField>
                 </div>
-                <div className=" float-right mb-4">
+                {/* <div className="new-user">
+                    New User ? ,click here
+                </div> */}
+                <div className="mb-4">
                     <MyButton label="Log In" clicked={this.logInHandler}></MyButton>
                 </div>
                 </div>

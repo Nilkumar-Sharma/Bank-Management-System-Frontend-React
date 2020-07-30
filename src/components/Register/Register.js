@@ -4,8 +4,6 @@ import  './Register.scss';
 import MyButton from '../Shared/MyButton/MyButton'
 import * as auth from '../../Services/Authentication'
 import { connect } from 'react-redux'
-import { history } from "history";
-import customHistory from '../../App';
 /** 
  *  As a Customer, I should be able to register my details in the system so that I can 
  * login into the system Acceptance criteria: Customer should be able register the details 

@@ -12,7 +12,7 @@ class Alert extends Component {
             return (
                 <div>
                     {
-                        this.props.showAlert.typ != 'hide' &&
+                        this.props.showAlert.typ !== 'hide' &&
                         <div className={"alert  alert-dismissible alert-" + this.props.showAlert.typ} >
                             <a href="#" className="close" data-dismiss="alert" aria-label="close">&times;</a>
                             <strong>Success!</strong>{this.props.showAlert.message}

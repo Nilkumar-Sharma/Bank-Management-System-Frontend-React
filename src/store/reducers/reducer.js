@@ -1,5 +1,4 @@
 import * as auth from '../../Services/Authentication.js'
-import { act } from 'react-dom/test-utils';
 import * as actionTypes from '../actions/actionTypes'
 const initialState = {
     counter: 0,
@@ -16,7 +15,19 @@ const initialState = {
         Contact: "Some Contact",
         DOB:"Some DOB"
     },
-    loans:[]
+    loans: [
+        {
+            "Rate of Interest": "3",
+        Amount: "1203",
+Date: "  30/07/2020",
+Duration: "5 years"
+        }, {
+            "Rate of Interest": "5",
+            Amount: "10",
+            Date: "  30/07/2020",
+            Duration: "10 years"
+        }
+    ]
 };
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {

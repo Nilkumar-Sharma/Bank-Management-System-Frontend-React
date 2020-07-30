@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import InputField from '../Shared/InputField/InputField'
 import './Loan.scss';
 import MyButton from '../Shared/MyButton/MyButton'
+import { connect } from 'react-redux'
+import * as actionTypes from '../../store/actions/actionTypes'
 /** 
 As a Customer, I should be able to login so that I can apply and view the loan details 
 Acceptance criteria: Customer should be able to apply loan in the system and it should be saved in the database. 
@@ -17,6 +19,8 @@ class Loan extends Component{
     }
     clickHandler = () => {
         //make api call
+        this.props.onApplyLoan(this.state);
+        // LOAN_APPLY_INITIATE
         console.log(this.state)
     }
     render() {
@@ -29,11 +33,11 @@ class Loan extends Component{
                 </div>
                 <div className="row mt-5">
                 <div className="element1 col-lg-6 col-md-5">
-                <InputField type="select" options={["Student Loans","Car Loans","Appliance Loan"]}  Label="Loan Type" name="Loan Type" changes={this.handleChange}></InputField>
+                <InputField type="select" options={["Student Loans","Car Loans","Appliance Loan"]}  Label="Type" name="Type" changes={this.handleChange}></InputField>
                 </div>
                 <div className="element1 col-lg-6 col-md-5">
 
-                <InputField Label="Loan Amount" name="Loan Amount" changes={this.handleChange}></InputField>
+                <InputField Label="Amount" name="Amount" changes={this.handleChange}></InputField>
                 </div>
                 <div className="element1 col-lg-6 col-md-5">
 
@@ -45,10 +49,10 @@ class Loan extends Component{
                 </div>
                 <div className="element1 col-lg-6 col-md-5">
 
-                        <InputField Label="Loan Duration" name="Loan Duration" changes={this.handleChange}></InputField>
+                        <InputField Label="Duration" name="Duration" changes={this.handleChange}></InputField>
            </div>
 
-<div className="button1">
+<div className="button1 offset-12 col-12">
                         <MyButton  label="Apply" clicked={this.clickHandler}></MyButton>
                         </div>
                 </div>
@@ -57,4 +61,9 @@ class Loan extends Component{
             </div>)
         }
 }
-export default Loan;
+const hereToState = (dispatch) => {
+    return {
+        onApplyLoan:(payload)=>dispatch({type:actionTypes.LOAN_APPLY_INITIATE,payload})
+    }
+}
+export default  connect(null,hereToState)(Loan);

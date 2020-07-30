@@ -4,6 +4,7 @@
             localStorage.setItem("BMS", paylaod);
             return true;
         } else {
+            console.log(paylaod)
             alert("Invalid Crednetials")
             return false;
         }

@@ -7,10 +7,19 @@ label{
 
 }
 input,select{
-    min-width: 150px !important;
+    /* min-width: 150px !important; */
+    /* border:none; */
+    padding: 8px;
+    border-radius: 10px;
+}
+input::after{
+    border:none;
 }
 select{
     /* margin-left: 50px; */
-    margin-left: 20px !important;
-    min-width: ;
+    /* margin-left: 20px !important; */
+    /* min-width: ; */
+}
+class1{
+    width: 100%;
 }

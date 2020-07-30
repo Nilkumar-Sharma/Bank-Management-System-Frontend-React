@@ -4,13 +4,21 @@ import { connect } from 'react-redux'
 import * as auth from '../../Services/Authentication'
 import history from '../../history/history'
 class LogOut extends Component{
-    // constructor(props, context) {
-    //     super(props, context);
-    //     //do something...
-    // }
+  
     render() {
         // return()
-        return (<div>Loogging yout tour {this.props.loggedIn?"Trueee":"Fakksee"}</div>)
+        return (<div>
+            {this.props.loggedIn && <div className="container shadow justify-content-center">Logging you out
+        </div>
+
+            }
+                {
+                !this.props.loggedIn && 
+                <div className="container shadow justify-content-center">Logged Out success
+        </div>
+                }
+        </div>
+        )
         // return <Redirect to='/login' />
     }
     constructor(props) {

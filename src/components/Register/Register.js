@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import InputField from '../Shared/InputField/InputField'
-import style from './Register.module.scss';
+import  './Register.scss';
 import MyButton from '../Shared/MyButton/MyButton'
 import * as auth from '../../Services/Authentication'
-import { connect } from 'react-redux' 
+import { connect } from 'react-redux'
 import { history } from "history";
 import customHistory from '../../App';
 /** 
@@ -16,8 +16,8 @@ import customHistory from '../../App';
  * Account Type etc
 
 */
-class Register extends Component{
-    
+class Register extends Component {
+
     handleChange = (event) => {
         // let history = useHistory();
         // console.log(history )
@@ -35,27 +35,56 @@ class Register extends Component{
     }
     render() {
         return (<div>
-            Registration Page
-            <div className="container">
-                <InputField Label="Name" name="Name" changes={this.handleChange}></InputField>
-                <InputField Label="Username" name="Username" changes={this.handleChange}></InputField>
-                <InputField Label="Password" name="Password" changes={this.handleChange}></InputField>
-                <InputField Label="Address" name="Address" changes={this.handleChange}></InputField>
-                <InputField Label="State" name="State" changes={this.handleChange}></InputField>
-                <InputField Label="Country" name="Country" changes={this.handleChange}></InputField>
-                <InputField Label="Email" name="Email" changes={this.handleChange}></InputField>
-                <InputField Label="Pan" name="Pan" changes={this.handleChange}></InputField>
-                <InputField Label="Contact No." name=" No." changes={this.handleChange}></InputField>
-                <InputField Label="Dob" name="Dob" changes={this.handleChange}></InputField>
-                <InputField Label="Account Type" name=" Type" changes={this.handleChange}></InputField>
-                <MyButton label="Register" name="Register" clicked={this.registrationHandler}></MyButton>
+            <div className="container mt-5 mb-5  border clearfix shadow">
+                <div className="header1">
+                    Registration Page
+                     
+            </div>
+                <div className="input1">
+                    <InputField Label="Name" name="Name" changes={this.handleChange}></InputField>
                 </div>
-            </div>)
+                <div className="input1">
+                    <InputField Label="Username" name="Username" changes={this.handleChange}></InputField>
+                </div>
+                <div className="input1">
+                    <InputField Label="Password" name="Password" changes={this.handleChange}></InputField>
+                </div>
+                <div className="input1">
+                    <InputField Label="Address" name="Address" changes={this.handleChange}></InputField>
+                </div>
+                <div className="input1">
+                    <InputField Label="State" name="State" changes={this.handleChange}></InputField>
+                </div>
+                <div className="input1">
+                    <InputField Label="Country" name="Country" changes={this.handleChange}></InputField>
+                </div>
+                <div className="input1"><InputField Label="Email" name="Email" changes={this.handleChange}></InputField>
+                </div>
+                <div className="input1">
+                    <InputField Label="Pan" name="Pan" changes={this.handleChange}></InputField>
+                </div>
+                <div className="input1">
+                    <InputField Label="Contact No." name=" No." changes={this.handleChange}></InputField>
+                </div>
+                <div className="input1">
+                    <InputField Label="Account Type" name=" Type" changes={this.handleChange}></InputField>
+
+                </div>
+                <div className="input1">
+                    <InputField Label="Dob" name="Dob" changes={this.handleChange}></InputField>
+                </div>
+                <div className="button1"> 
+                    <MyButton label="Register" name="Register" clicked={this.registrationHandler}></MyButton>
+
+                </div>
+            </div>
+            </div>
+            )
         }
 }
 const mapStateToProps = (state) => {
     return {
-        isLoggedIn: state.isLoggedIn
+                isLoggedIn: state.isLoggedIn
     }
     
 }

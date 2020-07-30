@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
 import InputField from '../Shared/InputField/InputField'
-import style from './LogIn.module.scss';
+import  './LogIn.scss';
 import MyButton from '../Shared/MyButton/MyButton'
 import * as auth from '../../Services/Authentication'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
+import * as actionTypes from '../../store/actions/actionTypes'
+import * as validators from '../Shared/Validators'
 /** 
  *  As a Customer, I should be able to register my details in the system so that I can 
  * login into the system Acceptance criteria: Customer should be able register the details 
@@ -15,7 +17,7 @@ import {connect} from 'react-redux'
 
 */
 class LogIn extends Component{
-    validators = [];
+    validators = [validators.HOCrequired("USername is required"),(value)=>(value.trim().length>5?true:"Minimum Length is 5")];
     constructor(props) {
         super(props);
         this.state = {
@@ -34,11 +36,12 @@ class LogIn extends Component{
         console.log(error)
     }
     logInHandler = () => {
-        if (auth.logIn(this.state)) {
-            this.props.onLoggedIn(this.state)
-        }else {
+        // if (auth.logIn(this.state)) {
+        this.props.logInSaga(this.state)
+            // this.props.onLoggedIn(this.state)
+        // }else {
             
-        }
+        // }
     }
  
     render() {
@@ -47,14 +50,17 @@ class LogIn extends Component{
            
           
             {this.props.loggedIn &&
-                <div>
-                Already logged in 
+                <div className="container  mt-5 mb-5  border clearfix shadow ">
+                <div className="alreadyLoggedIn">
+                    Already logged in 
+                </div>
+
                 </div>
                 
         }
             { !this.props.loggedIn &&
                 <div className="container  mt-5 mb-5  border clearfix shadow">
-                <h5 className="mb-5">Log In Page
+                <h5 className="header1">Log In Page
             </h5> 
                 <div className="row justify-content-center mt-3">
                     <InputField Label="Username" name="UserName" validators={this.validators} changes={this.handleChange}></InputField>
@@ -85,6 +91,9 @@ const dispatch = (dispatch) => {
         onLoggedIn: (payload) => {
             // console.log(payload)
             dispatch({ type: "LogMeIn", payload })
+        },
+        logInSaga: (payload) => {
+            dispatch({type:actionTypes.AUTH_INITIATE,payload})
         }
     
     }

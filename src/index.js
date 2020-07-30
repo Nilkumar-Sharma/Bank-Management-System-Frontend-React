@@ -8,7 +8,6 @@ import { createStore, compose, applyMiddleware } from 'redux'
 import rootReducer from './store/reducers/reducer'
 import { BrowserRouter, Switch,Route,Link } from 'react-router-dom';
 import Register from './components/Register/Register'
-import { createBrowserHistory } from 'history';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import LogIn from './components/LogIn/LogIn';
 import Loan from './components/Loan/Loan'
@@ -39,7 +38,7 @@ const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware,logger)));
 sagaMiddleware.run(watchAuth)
-store.dispatch({ type:'SHOW_ALERT_INITIATE',payload:{typ:'show',message:'From redux saaa'}})
+// store.dispatch({ type:'SHOW_ALERT_INITIATE',payload:{typ:'danger',message:'From redux saaa'}})
 ReactDOM.render(
   <Provider store={store}>
     <React.StrictMode>

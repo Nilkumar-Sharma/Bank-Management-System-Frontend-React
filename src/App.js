@@ -6,8 +6,8 @@ function App() {
   return (
     <div className="App">
      
-     
-    <Counter></Counter>
+     Bank Management System
+    {/* <Counter></Counter> */}
     </div>
 
 

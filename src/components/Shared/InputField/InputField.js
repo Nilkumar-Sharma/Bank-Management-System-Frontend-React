@@ -7,7 +7,7 @@ class InputField extends Component {
         Label: "Label",
         classes: "",
         value: "",
-        id: "setId",
+        // id: "setId",
         name: "name",
         // PlaceHolder: "PlaceHolder Here",
         options: [],
@@ -62,11 +62,11 @@ class InputField extends Component {
                     }
                     {/* <div className=""> */}
                     <div className="col">
-                        <label className="label label-primary " htmlFor={this.props.id}>{this.props.Label}</label>
+                        <label className="label label-primary " htmlFor={this.props.id||this.props.name}>{this.props.Label}</label>
                     </div>
                     <div className="col">
                         {this.props.type === "text" &&
-                            <input className="" name={this.props.name} id={this.props.id} type={this.props.type} onChange={
+                            <input className="" name={this.props.name} id={this.props.id||this.props.name} type={this.props.type} onChange={
                                 // (this.props.changes) || ((e)=>{this.setState({value:e.target.value})})
                                 (event) =>
                                     this.handleChange(event)
@@ -82,15 +82,33 @@ class InputField extends Component {
                         {
                             this.props.type === "select" &&
                             <div>
-                                <select className="" name={this.props.name} onChange={(event) => this.handleChange(event)}
+                                <select id={this.props.id|| this.props.name} className="" name={this.props.name} onChange={(event) => this.handleChange(event)}
                                     disabled={this.props.readOnly !== false ? true : false}
                                 >
                                     {this.props.options.map(x =>
-                                        <option value={x} key={x}>{x}</option>
+                                        <option value={x} key={x}
+                                            selected={(x === this.props.value) && true}
+                                        >{x}</option>
                                     )}
                                 </select>
                             </div>
                         }
+
+                        {this.props.type === "date" &&
+                            <input className="" name={this.props.name} id={this.props.id||this.props.name} type={this.props.type} onChange={
+                                // (this.props.changes) || ((e)=>{this.setState({value:e.target.value})})
+                                (event) =>
+                                    this.handleChange(event)
+                            }
+                                placeholder={this.props.placeHolder || this.props.name} value={this.state.value}
+
+                                disabled={this.props.readOnly !== false ? true : false}
+
+                            ></input>
+
+
+                        }
+                       
 
                     </div>
                     {

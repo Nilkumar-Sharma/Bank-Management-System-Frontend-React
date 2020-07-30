@@ -65,7 +65,7 @@ class Register extends Component {
                     <InputField Label="Account Type" name=" Type" changes={this.handleChange}></InputField>
                 </div>
                 <div className="input1">
-                    <InputField Label="Dob" name="Dob" changes={this.handleChange}></InputField>
+                    <InputField type="date" Label="Dob" name="Dob" changes={this.handleChange}></InputField>
                 </div>
                 <div className="button1"> 
                     <MyButton label="Register" name="Register" clicked={this.registrationHandler}></MyButton>

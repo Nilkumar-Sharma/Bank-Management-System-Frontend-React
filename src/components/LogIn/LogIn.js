@@ -34,6 +34,7 @@ class LogIn extends Component{
     logInHandler = () => {
         // if (auth.logIn(this.state)) {
         this.props.logInSaga(this.state)
+        // this.props.dispatch({ type: "LogMeIn", payload:this.state })
             // this.props.onLoggedIn(this.state)
         // }else {
             
@@ -84,7 +85,7 @@ const mapStateToProps = (state) => {
         loggedIn:state.loggedIn
     }
 }
-const dispatch = (dispatch) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         onLoggedIn: (payload) => {
             // console.log(payload)
@@ -96,4 +97,4 @@ const dispatch = (dispatch) => {
     
     }
 }
-export default connect(mapStateToProps,dispatch)(LogIn);
+export default connect(mapStateToProps, mapDispatchToProps)(LogIn);

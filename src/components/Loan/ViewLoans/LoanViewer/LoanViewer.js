@@ -10,19 +10,19 @@ const LoanViewer = React.memo(props => {
                     Loan 
                      </div>
                 <div className="row mt-4 ml-4">
-                    <div className="element1 col-lg-6 col-md-5">
-                        <InputField type="select" options={["Student Loans", "Car Loans", "Appliance Loan"]} Label="Type" value={props.loanData.Type} name="Type"  readOnly="true" ></InputField>
+                    <div className="loan-viewer-inputfield col-lg-3 col-md-5">
+                        <InputField type="select" options={["Student Loans", "Car Loans", "Appliance Loan"]} Label="Type" value={props.loanData['Loan Type']} name="Type"  readOnly="true" ></InputField>
                     </div>
-                    <div className="element1 col-lg-6 col-md-5">
+                    <div className="loan-viewer-inputfield col-lg-3 col-md-5">
                         <InputField Label="Amount" value={props.loanData.Amount} name="Amount"  readOnly="true" ></InputField>
                     </div>
-                    <div className="element1 col-lg-6 col-md-5">
+                    <div className="loan-viewer-inputfield col-lg-3 col-md-5">
                         <InputField Label="Date" value={props.loanData.Date} name="Date"  readOnly="true" ></InputField>
                     </div>
-                    <div className="element1 col-lg-6 col-md-5">
+                    <div className="loan-viewer-inputfield col-lg-3 col-md-5">
                         <InputField Label="Rate of Interest" value={props.loanData['Rate of Interest']} name=" Rate of Interest"  readOnly="true" ></InputField>
                     </div>
-                    <div className="element1 col-lg-6 col-md-5">
+                    <div className="loan-viewer-inputfield col-lg-3 col-md-5">
                         <InputField Label="Duration" value={props.loanData.Duration} name="Duration"  readOnly={"true"} ></InputField>
                     </div>
                    

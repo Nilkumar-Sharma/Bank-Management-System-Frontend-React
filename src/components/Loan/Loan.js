@@ -26,28 +26,28 @@ class Loan extends Component{
     render() {
         try{
         return (<div>
-            <div className="container border shadow container1 ">
+            <div className="container border shadow loan-container ">
                 <div className="header">
                    Apply Loan
 
                 </div>
                 <div className="row mt-5 row-container ">
-                <div className="element1 col-lg-6 col-md-5">
-                <InputField type="select" options={["Student Loans","Car Loans","Appliance Loan"]}  Label="Type" name="Type" changes={this.handleChange}></InputField>
+                <div className="loan-apply-inputfield col-lg-6 col-md-5">
+                <InputField type="select" name="Loan Type" options={["Student Loans","Car Loans","Appliance Loan"]}  Label="Type" name="Type" changes={this.handleChange}></InputField>
                 </div>
-                <div className="element1 col-lg-6 col-md-5">
+                <div className="loan-apply-inputfield col-lg-6 col-md-5">
                 <InputField Label="Amount" name="Amount" changes={this.handleChange}></InputField>
                 </div>
-                <div className="element1 col-lg-6 col-md-5">
+                <div className="loan-apply-inputfield col-lg-6 col-md-5">
                 <InputField Label="Date" name="Date" changes={this.handleChange}></InputField>
                 </div>
-                <div className="element1 col-lg-6 col-md-5">
+                <div className="loan-apply-inputfield col-lg-6 col-md-5">
                 <InputField Label="Rate of Interest" name=" Rate of Interest" changes={this.handleChange}></InputField>
                 </div>
-                <div className="element1 col-lg-6 col-md-5">
+                <div className="loan-apply-inputfield col-lg-6 col-md-5">
                         <InputField Label="Duration" name="Duration" changes={this.handleChange}></InputField>
            </div>
-<div className="button1">
+<div className="loan-apply-button">
                         <MyButton  label="Apply" clicked={this.clickHandler}></MyButton>
                         </div>
                 </div>

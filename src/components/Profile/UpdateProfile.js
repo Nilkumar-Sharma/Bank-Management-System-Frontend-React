@@ -36,39 +36,39 @@ class UpdateProfile extends Component{
         try{
         return (<div>
             {this.state.Name}
-            <div className="container border shadow pr-5">
+            <div className="container-fluid profile-container border shadow pr-5">
                 <div className="header">
                     Update Profile Page
                 </div>
                 <div className="row mt-5 ">
-                <div className="element1 col-4">
+                <div className="element1  col-md-4 col-sm-6">
                     <InputField Label="Name" name="UserName" value={this.props.user.UserName} changes={this.handleInputField}></InputField>
                 </div>
-                <div className="element1 col-4">
+                <div className="element1  col-md-4 col-sm-6">
                 <InputField Label="Password" name="Password" value={this.props.user.Password} changes={this.handleInputField}></InputField>
             </div>
-            <div className="element1 col-4">
+            <div className="element1  col-md-4 col-sm-6">
             <InputField Label="Address" name="Address" value={this.props.user.Address} changes={this.handleInputField}></InputField>
         </div>
-        <div className="element1 col-4">
+        <div className="element1  col-md-4 col-sm-6">
             <InputField Label="State" name="State" value={this.props.user.State}   changes={this.handleInputField}></InputField>
             </div>
-            <div className="element1 col-4">
+            <div className="element1  col-md-4 col-sm-6">
             <InputField Label="Country" name="Country" value={this.props.user.Country}    changes={this.handleInputField}></InputField>
             </div>
-            <div className="element1 col-4">
+            <div className="element1  col-md-4 col-sm-6">
             <InputField Label="Email" name="Email" value={this.props.user.Email}   changes={this.handleInputField}></InputField>
             </div>
-            <div className="element1 col-4">
+            <div className="element1  col-md-4 col-sm-6">
             <InputField Label="Pan" name="Pan" value={this.props.user.Pan}   changes={this.handleInputField}></InputField>
             </div>
-            <div className="element1 col-4">
+            <div className="element1  col-md-4 col-sm-6">
             <InputField Label="Contact" name="Contact" value={this.props.user.Contact}   changes={this.handleInputField}></InputField>
             </div>
-            <div className="element1 col-4">
+            <div className="element1  col-md-4 col-sm-6">
             <InputField Label="DOB" name="DOB" value={this.props.user.DOB} changes={this.handleInputField}></InputField>
             </div>
-            <div className="button1  offset-9">
+            <div className="profile-update-button">
                         <MyButton label="Update" clicked={this.handleUpdateClick} ></MyButton>
                     </div></div>
             </div>

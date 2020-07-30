@@ -15,3 +15,34 @@
     margin-left:90%;
     margin-bottom: 20px;
 }
+.profile-update-button{
+    margin-left: 80%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+}
+.container{
+    min-width:194px;
+}
+.profile-container{
+    min-width: 195px;
+}
+
+@media only screen and (min-width: 200px){
+.profile-update-button{
+    margin-left: 30%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+}
+
+// and (min-width:307) 
+@media only screen and (max-width:576){
+    .element1{
+        margin-left: 50%;
+        border-style: dashed;
+    }
+    .profile-update-button{
+        margin-left: 10%;
+    }
+}

@@ -20,12 +20,15 @@ const initialState = {
             "Rate of Interest": "3",
         Amount: "1203",
 Date: "  30/07/2020",
-Duration: "5 years"
+            Duration: "5 years",
+'Loan Type':"Student Loan",
         }, {
             "Rate of Interest": "5",
             Amount: "10",
             Date: "  30/07/2020",
-            Duration: "10 years"
+            Duration: "10 years",
+            'Loan Type': "Car Loans",
+
         }
     ]
 };

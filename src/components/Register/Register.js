@@ -35,40 +35,42 @@ class Register extends Component {
                     Registration Page
                      
             </div>
-                <div className="input1">
+                <div className="row">
+                <div className="user-register-inputfield  col-md-4 col-sm-6">
                     <InputField Label="Name" name="Name" changes={this.handleChange}></InputField>
                 </div>
-                <div className="input1">
+                <div className="user-register-inputfield  col-md-4 col-sm-6">
                     <InputField Label="Username" name="Username" changes={this.handleChange}></InputField>
                 </div>
-                <div className="input1">
+                <div className="user-register-inputfield  col-md-4 col-sm-6">
                     <InputField Label="Password" name="Password" changes={this.handleChange}></InputField>
                 </div>
-                <div className="input1">
+                <div className="user-register-inputfield  col-md-4 col-sm-6">
                     <InputField Label="Address" name="Address" changes={this.handleChange}></InputField>
                 </div>
-                <div className="input1">
+                <div className="user-register-inputfield  col-md-4 col-sm-6">
                     <InputField Label="State" name="State" changes={this.handleChange}></InputField>
                 </div>
-                <div className="input1">
+                <div className="user-register-inputfield  col-md-4 col-sm-6">
                     <InputField Label="Country" name="Country" changes={this.handleChange}></InputField>
                 </div>
-                <div className="input1"><InputField Label="Email" name="Email" changes={this.handleChange}></InputField>
+                <div className="user-register-inputfield  col-md-4 col-sm-6"><InputField Label="Email" name="Email" changes={this.handleChange}></InputField>
                 </div>
-                <div className="input1">
+                <div className="user-register-inputfield  col-md-4 col-sm-6">
                     <InputField Label="Pan" name="Pan" changes={this.handleChange}></InputField>
                 </div>
-                <div className="input1">
+                <div className="user-register-inputfield  col-md-4 col-sm-6">
                     <InputField Label="Contact No." name=" No." changes={this.handleChange}></InputField>
                 </div>
-                <div className="input1">
+                <div className="user-register-inputfield  col-md-4 col-sm-6">
                     <InputField Label="Account Type" name=" Type" changes={this.handleChange}></InputField>
                 </div>
-                <div className="input1">
+                <div className="user-register-inputfield  col-md-4 col-sm-6">
                     <InputField type="date" Label="Dob" name="Dob" changes={this.handleChange}></InputField>
                 </div>
-                <div className="button1"> 
+                <div className="user-register-button"> 
                     <MyButton label="Register" name="Register" clicked={this.registrationHandler}></MyButton>
+                </div>
                 </div>
             </div>
             </div>

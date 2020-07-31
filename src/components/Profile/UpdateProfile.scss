@@ -21,11 +21,9 @@
     margin-bottom: 20px;
 
 }
-.container{
-    min-width:194px;
-}
+
 .profile-container{
-    min-width: 195px;
+    // min-width: 195px;
 }
 
 @media only screen and (min-width: 200px){
@@ -45,4 +43,7 @@
     .profile-update-button{
         margin-left: 10%;
     }
+}
+.update-profile-inputfield{
+  margin-top:8px;   
 }

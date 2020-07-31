@@ -84,6 +84,7 @@ class InputField extends Component {
                             <div>
                                 <select id={this.props.id|| this.props.name} className="" name={this.props.name} onChange={(event) => this.handleChange(event)}
                                     disabled={this.props.readOnly !== false ? true : false}
+                                    // defaultValue={(this.props.value.length > 0 && "this.props.value")}
                                 >
                                     {this.props.options.map(x =>
                                         <option value={x} key={x}

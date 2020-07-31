@@ -4,6 +4,7 @@ import './Loan.scss';
 import MyButton from '../Shared/MyButton/MyButton'
 import { connect } from 'react-redux'
 import * as actionTypes from '../../store/actions/actionTypes'
+import * as valids from '../../components/Shared/Validators'
 /** 
 As a Customer, I should be able to login so that I can apply and view the loan details 
 Acceptance criteria: Customer should be able to apply loan in the system and it should be saved in the database. 
@@ -42,7 +43,7 @@ class Loan extends Component{
                 <InputField Label="Date" name="Date" changes={this.handleChange}></InputField>
                 </div>
                 <div className="loan-apply-inputfield col-lg-6 col-md-5">
-                <InputField Label="Rate of Interest" name=" Rate of Interest" changes={this.handleChange}></InputField>
+                        <InputField Label="Rate of Interest" name=" Rate of Interest" validators={[ valids.HOCrequired(),valids.HOCisNumber(), ]} changes={this.handleChange}></InputField>
                 </div>
                 <div className="loan-apply-inputfield col-lg-6 col-md-5">
                         <InputField Label="Duration" name="Duration" changes={this.handleChange}></InputField>

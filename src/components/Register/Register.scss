@@ -1,16 +1,13 @@
 
 .container{
-    justify-content: center;
+    // justify-content: center;
+    padding-bottom: 30px;
 }
 .input1{
-    justify-content: center;
-    margin-left: 40%;
-    margin-top: 10px;
-    border:2px
-}
-input[type=text]:focus{
-    border-color: dodgerblue;
-    box-shadow: 0 0 8px 0 dodgerblue;
+    // justify-content: center;
+    // margin-left: 40%;
+    // margin-top: 10px;
+    // border:2px
 }
 .header1{
     text-align: center;
@@ -18,4 +15,11 @@ input[type=text]:focus{
     margin-top: 20px;
     font-size: large;
     margin-bottom: 50px;
+}
+.user-register-inputfield{
+    margin-bottom: 12px;
+}
+.user-register-button{
+    margin-top: 20px;
+
 }

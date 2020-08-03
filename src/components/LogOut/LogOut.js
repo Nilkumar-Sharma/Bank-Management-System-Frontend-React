@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {withRouter} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 import { connect } from 'react-redux'
 import {useDispatch,useSelector} from 'react-redux'
 import './LogOut.scss'
@@ -8,6 +8,9 @@ function LogOut(props) {
     const dispatch = useDispatch();
     const loggedIn = useSelector(state => state.loggedIn)
     const logMeOut = () => dispatch({ type: "LogMeOut" })
+    let history = useHistory();
+    history.push('/')
+
     logMeOut()
         try{
         return (<div>
@@ -24,7 +27,8 @@ function LogOut(props) {
             )
         } catch (error) {
             console.log(error)
-        }
+    }
+
     }
     
 export default LogOut;

@@ -14,6 +14,7 @@ import createSagaMiddleware from 'redux-saga'
 import { watchAuth } from './store/saga/index'
 import Footer from './components/Footer/Footer'
 import Routes from './routes/Routes'
+import thunk from 'redux-thunk';
 // store.subscribe(_=>console.log(store.getState()))
 // const customHistory = createBrowserHistory();
 // console.log(customHistory)
@@ -31,7 +32,7 @@ const logger = store => {
 }
 const sagaMiddleware = createSagaMiddleware()
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware,logger)));
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(sagaMiddleware,logger,thunk)));
 sagaMiddleware.run(watchAuth)
 // store.dispatch({ type:'SHOW_ALERT_INITIATE',payload:{typ:'danger',message:'From redux saaa'}})
 ReactDOM.render(
@@ -53,3 +54,6 @@ ReactDOM.render(
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+
+export { store };

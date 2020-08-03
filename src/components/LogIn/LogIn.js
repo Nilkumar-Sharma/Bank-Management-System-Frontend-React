@@ -50,7 +50,7 @@ class LogIn extends Component{
             {this.props.loggedIn &&
                 <div className="log-in-container  mt-5 mb-5  border clearfix shadow ">
                 <div className="alreadyLoggedIn">
-                    Already logged in 
+                    Logged in 
                 </div>
                 </div>
                 

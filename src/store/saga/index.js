@@ -18,13 +18,12 @@ function* authenticateUser(payload) {
     yield console.log(payload)
     // // yield 
     try {
-        // TODO api calls here
         if (payload.UserName.trim() === "customer" && payload.Password.trim() === "customer") {
             yield localStorage.setItem("BMS", payload);
-            yield put({ type: 'SHOW_ALERT_INITIATE', payload: { typ: 'success', message: 'Logged In Successfully' } })
+            yield put({ type: actionTypes.SHOW_ALERT_INITIATE, payload: { typ: 'success', message: 'Logged In Successfully' } })
             yield put({ type: actionTypes.AUTH_SUCCESS })
         } else {
-            yield put({ type: 'SHOW_ALERT_INITIATE', payload: { typ: 'danger', message: 'Invalid Credentials' } })
+            yield put({ type: actionTypes.SHOW_ALERT_INITIATE, payload: { typ: 'danger', message: 'Invalid Credentials' } })
             yield({ type: actionTypes.AUTH_FAILED })
         }
     } catch (error) {
@@ -36,7 +35,7 @@ function* updateProfile(action) {
     try {
         // TODO make api call and save it to local session
         yield put({ type: actionTypes.UPDATE_PROFILE_SUCCESS, payload })
-        yield put({ type: 'SHOW_ALERT_INITIATE', payload: { typ: 'success', message: 'Profile Updated Successfully' } })
+        yield put({ type: actionTypes.SHOW_ALERT_INITIATE, payload: { typ: 'success', message: 'Profile Updated Successfully' } })
     } catch (err) {
         yield put({type:actionTypes.UPDATE_PROFILE_FAILED})
     }

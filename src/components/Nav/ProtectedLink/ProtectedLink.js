@@ -5,6 +5,8 @@ const ProtectedLink=(props=>{
 
     let { loggedIn } = useSelector(state => state)
     // console.log(loggedIn)
+    // console.log(props)
+
     // if (loggedIn.loggedIn) loggedIn = loggedIn.loggedIn;
     // console.log(props.protect === 'afterLogIn' && loggedIn === true)
     // console.log(((((props.protect === 'afterLogIn') && loggedIn === true) ) )?"SHow":"Hide")

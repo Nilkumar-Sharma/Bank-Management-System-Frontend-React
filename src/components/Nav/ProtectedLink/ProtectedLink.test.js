@@ -24,14 +24,14 @@ jest.mock('react-router-dom', () => ({
 
 
 describe('<ProtectedLink/>', () => {
-    let useSelectorSpy;
-    let useDispatchSpy;
+    // let useSelectorSpy;
+    // let useDispatchSpy;
     // let mockStore = configureMockStore();
     let store;
-    beforeEach(() => {
-        useSelectorSpy = jest.spyOn(Redux, 'useSelector');
-        useDispatchSpy = jest.spyOn(Redux, 'useDispatch');
-    })
+    // beforeEach(() => {
+    //     useSelectorSpy = jest.spyOn(Redux, 'useSelector');
+    //     useDispatchSpy = jest.spyOn(Redux, 'useDispatch');
+    // })
 
     it('Links with protect="afterLogIn" should not  be shown when loggedIn = false ', () => {
         

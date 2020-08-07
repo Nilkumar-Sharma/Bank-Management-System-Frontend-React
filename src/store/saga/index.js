@@ -19,8 +19,7 @@ function* authenticateUser(payload) {
     // // yield 
     try {
         if (payload.UserName.trim() === "customer" && payload.Password.trim() === "customer") {
-            yield localStorage.setItem("BMS", payload);
-            yield put({ type: actionTypes.SHOW_ALERT_INITIATE, payload: { typ: 'success', message: 'Logged In Successfully' } })
+//            yield put({ type: actionTypes.SHOW_ALERT_INITIATE, payload: { typ: 'success', message: 'Logged In Successfully' } })
             yield put({ type: actionTypes.AUTH_SUCCESS })
         } else {
             yield put({ type: actionTypes.SHOW_ALERT_INITIATE, payload: { typ: 'danger', message: 'Invalid Credentials' } })

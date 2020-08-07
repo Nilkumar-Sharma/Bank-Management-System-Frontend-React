@@ -6,23 +6,28 @@
  */
 import React,{Component } from 'react';
 import './MyButton.css'
-class MyButton extends Component {
-    static defaultProps = {
-        clicked:() => console.log("clicked "),
-        label:"Button Label",
-        value: "",
-        classes: "btn btn-secondary"
-    }
-    constructor(props) {
-        super(props);
-        console.log(this.props)
-    }
-    render() {
+const MyButton = (props = {
+    clicked: () => console.log("clicked "),
+    label: "Button Label",
+    value: "",
+    classes: "btn btn-secondary"
+})=>{
+    //  defaultProps = {
+    //     clicked:() => console.log("clicked "),
+    //     label:"Button Label",
+    //     value: "",
+    //     classes: "btn btn-secondary"
+    // }
+    // constructor(props) {
+    //     super(props);
+    //     console.log(props)
+    // }
+    // render() {
         try{
-        return <button className={this.props.classes} onClick={this.props.clicked} value={this.props.value} >{this.props.label}</button>
+        return <button className={props.classes} onClick={props.clicked} value={props.value} >{props.label}</button>
         } catch (error) {
             console.log(error)
         return (<div>SomeError has Happened,Contact Admin</div>) }
-        }
+        // }
 } 
 export default MyButton;

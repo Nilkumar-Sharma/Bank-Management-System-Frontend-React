@@ -4,7 +4,7 @@ function* authenticateUser(action) {
     try {
         if (action.UserName == "customer" && action.Password == "customer") {
             alert("Logged In from redux saga");
-            localStorage.setItem("BMS", action);
+           // localStorage.setItem("BMS", action);
             yeild({ type: AUTH_SUCESS })
         } else {
             alert("Invalid Crednetials")

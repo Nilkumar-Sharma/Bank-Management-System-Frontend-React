@@ -21,9 +21,9 @@ import Footer from '../src/components/Footer/Footer'
 import Routes from '../src/routes/Routes'
 
 import thunk from 'redux-thunk';
+import cors from 'cors';
 // store.subscribe(_=>console.log(store.getState()))
 // const customHistory = createBrowserHistory();
-// console.log(customHistory)
 const logger = store => {
     return next => {
         return action => {
@@ -36,7 +36,7 @@ const logger = store => {
 
     }
 }
-// const sagaMiddleware = createSagaMiddleware()
+const sagaMiddleware = createSagaMiddleware()
 // const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, (applyMiddleware( logger, thunk)));
 // sagaMiddleware.run(watchAuth)
@@ -49,10 +49,11 @@ const store = createStore(rootReducer, (applyMiddleware( logger, thunk)));
 const PORT = 8000;
 
 const app = express();
+app.use(cors())
 const x = require('./loans/LoanApi').express(app)
+
 // x(app)
-// x.express(app)
-console.log(x)
+// console.log(x)
 app.use("^/$", (req, res, next) => {
     fs.readFile(path.resolve("./build/index.html"), "utf-8", (err, data) => {
         if (err) {
@@ -62,7 +63,10 @@ app.use("^/$", (req, res, next) => {
         return res.send(
             data.replace(
                 '<div id="root"></div>',
-                `<div id="root">${ReactDOMServer.renderToString(<Provider store={store}>
+                `<div id="root">${
+                ReactDOMServer.renderToString(
+                    // <App></App>
+                    <Provider store={store}>
                     <React.StrictMode>
                         <StaticRouter >
                             <Navigation></Navigation>
@@ -71,7 +75,9 @@ app.use("^/$", (req, res, next) => {
                             <Footer></Footer>
                         </StaticRouter>
                     </React.StrictMode>
-                </Provider>)}</div>`
+                    </Provider>
+                )
+            }</div>`
             )
         );
     });

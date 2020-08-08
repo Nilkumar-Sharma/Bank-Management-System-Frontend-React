@@ -1,12 +1,26 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 
 import './ViewLoans.scss'
-import { useSelector } from 'react-redux'
+import { useSelector,useDispatch } from 'react-redux'
 import LoanViewer from './LoanViewer/LoanViewer'
+import { getLoansFromApi } from '../../../store/actions/action'
+import * as actionTypes from '../../../store/actions/actionTypes'
+
 const ViewLoan = React.memo(props => {
 
     
     const storeData = useSelector(state => state.loans);
+    // const dispatch =
+    const dispatch = useDispatch();
+    useEffect(() => {
+        
+        console.log("getting loan api")
+        dispatch(getLoansFromApi())
+        // dispatch(a)
+        // dispatch({ type: actionTypes.LOAN_GET_API_INITIATE ,action:{}})
+
+
+    },[]);
     return (<div className="container border shadow">
         <div className="header">
             View Applied Loans
@@ -16,7 +30,9 @@ const ViewLoan = React.memo(props => {
         {storeData.map(loan => {
            return <LoanViewer loanData={loan}></LoanViewer>
             
-        })}</div>
+        })}
+
+        </div>
     </div>)
 });
 export default ViewLoan;

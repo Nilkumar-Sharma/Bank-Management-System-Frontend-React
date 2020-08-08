@@ -16,24 +16,27 @@ const initialState = {
         DOB:"Some DOB"
     },
     loans: [
-        {
-            "Rate of Interest": "3",
-        Amount: "1203",
-Date: "  30/07/2020",
-            Duration: "5 years",
-'Loan Type':"Student Loan",
-        }, {
-            "Rate of Interest": "5",
-            Amount: "10",
-            Date: "  30/07/2020",
-            Duration: "10 years",
-            'Loan Type': "Car Loans",
+//         {
+//             "Rate of Interest": "3",
+//         Amount: "1203",
+// Date: "  30/07/2020",
+//             Duration: "5 years",
+// 'Loan Type':"Student Loan",
+//         }, {
+//             "Rate of Interest": "5",
+//             Amount: "10",
+//             Date: "  30/07/2020",
+//             Duration: "10 years",
+//             'Loan Type': "Car Loans",
 
-        }
+//         }
     ]
 };
 const rootReducer = (state = initialState, action) => {
     switch (action.type) {
+        case actionTypes.LOAN_SAVE_FROM_API:
+            console.log('reducer called')
+            return {...state,loans:action.payload}
         case actionTypes.LOAN_APPLY_SUCCESS:
             return {...state,loans:[...state.loans,action.payload]}
         case actionTypes.UPDATE_PROFILE_SUCCESS:
@@ -55,6 +58,7 @@ const rootReducer = (state = initialState, action) => {
         case "DEC":
             return { ...state,counter: state.counter - 1 }
         default: 
+            console.log(action)
             return state
         
         

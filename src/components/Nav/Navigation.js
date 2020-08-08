@@ -24,10 +24,12 @@ const Navigation=React.memo((props)=>{
                         <ProtectedLink protect='afterLogIn' to="/edit" name="Edit Profile"></ProtectedLink>
                         <ProtectedLink protect='afterLogIn' to="/viewloan" name="View Loan"></ProtectedLink>
                         <ProtectedLink protect='afterLogIn'  to="/logout" name="Log out"></ProtectedLink>
-                        
+
                     </ul>
                     </div>
-                    {/* </div> */}
+                
+                {/* </div> */}
+                
             </nav>
             </div>)
         } catch (error) {

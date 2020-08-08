@@ -1,11 +1,14 @@
 import { delay } from 'redux-saga/effects'
-import { takeEvery, put } from 'redux-saga/effects'
+import { takeEvery, put,call } from 'redux-saga/effects'
 import * as actionTypes from '../actions/actionTypes'
+import axios from 'axios'
 export function* watchAuth() {
     yield takeEvery(actionTypes.SHOW_ALERT_INITIATE, checkAlert);
     yield takeEvery(actionTypes.AUTH_INITIATE, authenticateUser);
     yield takeEvery(actionTypes.UPDATE_PROFILE_INITIATE, updateProfile);
     yield takeEvery(actionTypes.LOAN_APPLY_INITIATE, applyLoan);
+    yield takeEvery(actionTypes.LOAN_GET_API_INITIATE, getLoansFromApi);
+
 
 }
 function* checkAlert(payload){
@@ -51,4 +54,28 @@ function* applyLoan(action) {
     }
 
     
+}
+function getData() {
+    
+    return axios.get(`http://localhost:8000/api/loan`)
+}
+function* getLoansFromApi(action) {
+    try {
+        let { data } = yield call(getData)
+        yield put({ type: actionTypes.LOAN_SAVE_FROM_API, payload: data })
+        // yield (showMessage("Loans Feteched From Api"))
+
+    } catch (e) {
+        console.log(e)
+        
+    }
+   
+      
+}
+
+function showMessage(message, typ = "success") {
+     put({ type: actionTypes.SHOW_ALERT_INITIATE, payload: { typ:typ, message: 'Loan Applied Successfully' } })
+
+    //  put({ type: actionTypes.LOAN_APPLY_SUCCESS, payload: action.payload })
+
 }

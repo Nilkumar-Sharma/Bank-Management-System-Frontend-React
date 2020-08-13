@@ -34,19 +34,19 @@ class Loan extends Component{
                 </div>
                 <div className="row mt-5 row-container ">
                 <div className="loan-apply-inputfield col-lg-6 col-md-5">
-                <InputField type="select" name="Loan Type" options={["Student Loans","Car Loans","Appliance Loan"]}  Label="Type" name="Type" changes={this.handleChange}></InputField>
+                        <InputField type="select" name="Loan_Type" options={["Student Loans","Car Loans","Appliance Loan"]}  Label="Type" changes={this.handleChange}></InputField>
                 </div>
                 <div className="loan-apply-inputfield col-lg-6 col-md-5">
-                <InputField Label="Amount" name="Amount" changes={this.handleChange}></InputField>
+                        <InputField Label="Amount" type="number" name="Amount" changes={this.handleChange}></InputField>
                 </div>
                 <div className="loan-apply-inputfield col-lg-6 col-md-5">
-                <InputField Label="Date" name="Date" changes={this.handleChange}></InputField>
+                <InputField Label="Date"  name="Date" type="date" changes={this.handleChange}></InputField>
                 </div>
                 <div className="loan-apply-inputfield col-lg-6 col-md-5">
-                        <InputField Label="Rate of Interest" name=" Rate of Interest" validators={[ valids.HOCrequired(),valids.HOCisNumber(), ]} changes={this.handleChange}></InputField>
+                        <InputField Label="Rate of Interest" type="number" name="Rate_of_Interest" validators={[ valids.HOCrequired(),valids.HOCisNumber(), ]} changes={this.handleChange}></InputField>
                 </div>
                 <div className="loan-apply-inputfield col-lg-6 col-md-5">
-                        <InputField Label="Duration" name="Duration" changes={this.handleChange}></InputField>
+                        <InputField Label="Duration" type="number" name="Duration" changes={this.handleChange}></InputField>
            </div>
 <div className="loan-apply-button">
                         <MyButton  label="Apply" clicked={this.clickHandler}></MyButton>

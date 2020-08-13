@@ -16,13 +16,16 @@ function* checkAlert(payload){
     yield delay(3 * 1000);
     yield put({ type: actionTypes.SHOW_ALERT_HIDE})
 }
+
 function* authenticateUser(payload) {
     yield payload = payload.payload;
     yield console.log(payload)
     // // yield 
     try {
-        if (payload.UserName.trim() === "customer" && payload.Password.trim() === "customer") {
-//            yield put({ type: actionTypes.SHOW_ALERT_INITIATE, payload: { typ: 'success', message: 'Logged In Successfully' } })
+        const  {data}  = yield sendDataUser((payload))
+        if (data && data.token!=null) {
+            console.log(data.token)
+            //TODO save token in localstorage
             yield put({ type: actionTypes.AUTH_SUCCESS })
         } else {
             yield put({ type: actionTypes.SHOW_ALERT_INITIATE, payload: { typ: 'danger', message: 'Invalid Credentials' } })
@@ -46,7 +49,10 @@ function* updateProfile(action) {
 function* applyLoan(action) {
     yield console.log(action)
     try {
-        // TODO make api call and save it to local session
+        // TODO make api call
+        let  data  = yield sendDataLoan(action.payload)
+        console.log(data)
+        if(data==null)throw new Error("Unable to Apply for loan")
         yield put({ type: actionTypes.LOAN_APPLY_SUCCESS, payload:action.payload })
         yield put({ type: actionTypes.SHOW_ALERT_INITIATE, payload: { typ: 'success', message: 'Loan Applied Successfully' } })
     } catch (err) {
@@ -58,6 +64,18 @@ function* applyLoan(action) {
 function getData() {
     
     return axios.get(`http://localhost:8000/api/loan`)
+}
+function sendDataLoan(data) {
+    return axios.post(
+        `http://localhost:8000/api/loan`, data
+    )
+}
+
+function sendDataUser(data) {
+    console.log("http://localhost:8000/api/user/login")
+    return axios.post(
+        `http://localhost:8000/api/user/login`, data
+    )
 }
 function* getLoansFromApi(action) {
     try {

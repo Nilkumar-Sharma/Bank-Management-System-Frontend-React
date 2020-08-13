@@ -27,6 +27,7 @@ class InputField extends Component {
 
     }
     handleChange(event) {
+        console.log(this.props.name)
         //run validation and return error if any else error is null
         this.setState({ value: event.target.value, isDirty: true });
         this.setState({ errors: [] }, () => {
@@ -65,7 +66,7 @@ class InputField extends Component {
                         <label className="label label-primary " htmlFor={this.props.id||this.props.name}>{this.props.Label}</label>
                     </div>
                     <div className="col">
-                        {this.props.type === "text" &&
+                        {((this.props.type === "text" || this.props.type === "date")||(this.props.type==="number"))  &&
                             <input className="" name={this.props.name} id={this.props.id||this.props.name} type={this.props.type} onChange={
                                 // (this.props.changes) || ((e)=>{this.setState({value:e.target.value})})
                                 (event) =>
@@ -95,21 +96,7 @@ class InputField extends Component {
                             </div>
                         }
 
-                        {this.props.type === "date" &&
-                            <input className="" name={this.props.name} id={this.props.id||this.props.name} type={this.props.type} onChange={
-                                // (this.props.changes) || ((e)=>{this.setState({value:e.target.value})})
-                                (event) =>
-                                    this.handleChange(event)
-                            }
-                                placeholder={this.props.placeHolder || this.props.name} value={this.state.value}
-
-                                disabled={this.props.readOnly !== false ? true : false}
-
-                            ></input>
-
-
-                        }
-                       
+                        
 
                     </div>
                     {

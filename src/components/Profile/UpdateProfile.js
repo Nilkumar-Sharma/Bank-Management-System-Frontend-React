@@ -66,7 +66,7 @@ class UpdateProfile extends Component{
             <InputField Label="Contact" name="Contact" value={this.props.user.Contact}   changes={this.handleInputField}></InputField>
             </div>
             <div className="update-profile-inputfield  col-md-4 col-sm-6">
-            <InputField Label="DOB" name="DOB" value={this.props.user.DOB} changes={this.handleInputField}></InputField>
+            <InputField Label="DOB" name="DOB" type="date" value={this.props.user.DOB} changes={this.handleInputField}></InputField>
             </div>
             <div className="profile-update-button">
                         <MyButton label="Update" clicked={this.handleUpdateClick} ></MyButton>

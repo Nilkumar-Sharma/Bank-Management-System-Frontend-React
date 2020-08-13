@@ -22,8 +22,11 @@ import Routes from '../src/routes/Routes'
 
 import thunk from 'redux-thunk';
 import cors from 'cors';
-// store.subscribe(_=>console.log(store.getState()))
-// const customHistory = createBrowserHistory();
+const dotenv = require('dotenv').config()
+require('./db/mongodb.config')()
+var Logger = require('bunyan');
+var log = new Logger({ name: 'Server BMS' /*, ... */ });
+log.info("hi %s", "paul");
 const logger = store => {
     return next => {
         return action => {
@@ -36,54 +39,52 @@ const logger = store => {
 
     }
 }
-const sagaMiddleware = createSagaMiddleware()
-// const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore(rootReducer, (applyMiddleware( logger, thunk)));
-// sagaMiddleware.run(watchAuth)
-// store.dispatch({ type:'SHOW_ALERT_INITIATE',payload:{typ:'danger',message:'From redux saaa'}})
-// ReactDOM.render(
-   
-
-
-
 const PORT = 8000;
-
 const app = express();
 app.use(cors())
-const x = require('./loans/LoanApi').express(app)
+app.use(express.json())
+
+// app.use((req, res, next) => {
+//     req.logger = log
+//     next();
+// })
+require('./controllers/loans/LoanApi').express(app)
+require('./controllers/user/userApi')(app)
+
 
 // x(app)
 // console.log(x)
-app.use("^/$", (req, res, next) => {
-    fs.readFile(path.resolve("./build/index.html"), "utf-8", (err, data) => {
-        if (err) {
-            console.log(err);
-            return res.status(500).send("Some error happened");
-        }
-        return res.send(
-            data.replace(
-                '<div id="root"></div>',
-                `<div id="root">${
-                ReactDOMServer.renderToString(
-                    // <App></App>
-                    <Provider store={store}>
-                    <React.StrictMode>
-                        <StaticRouter >
-                            <Navigation></Navigation>
-                            <Alert></Alert>
-                            <Routes></Routes>
-                            <Footer></Footer>
-                        </StaticRouter>
-                    </React.StrictMode>
-                    </Provider>
-                )
-            }</div>`
-            )
-        );
-    });
-});
+// app.use("^/$", (req, res, next) => {
+//     fs.readFile(path.resolve("./build/index.html"), "utf-8", (err, data) => {
+//         if (err) {
+//             console.log(err);
+//             return res.status(500).send("Some error happened");
+//         }
+//         return res.send(
+//             data.replace(
+//                 '<div id="root"></div>',
+//                 `<div id="root">${
+//                 ReactDOMServer.renderToString(
+//                     // <App></App>
+//                     <Provider store={store}>
+//                     <React.StrictMode>
+//                         <StaticRouter >
+//                             <Navigation></Navigation>
+//                             <Alert></Alert>
+//                             <Routes></Routes>
+//                             <Footer></Footer>
+//                         </StaticRouter>
+//                     </React.StrictMode>
+//                     </Provider>
+//                 )
+//             }</div>`
+//             )
+//         );
+//     });
+// });
 
-app.use(express.static(path.resolve(__dirname, '..', 'build')))
+// app.use(express.static(path.resolve(__dirname, '..', 'build')))
 
 app.listen(PORT, () => {
     console.log(`App launched on ${PORT}`);

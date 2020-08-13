@@ -23,8 +23,9 @@ const MyButton = (props = {
     //     console.log(props)
     // }
     // render() {
+    console.log(props.classes)
         try{
-        return <button className={props.classes} onClick={props.clicked} value={props.value} >{props.label}</button>
+            return <button className={props.classes ||"btn btn-secondary"} onClick={props.clicked} value={props.value} >{props.label}</button>
         } catch (error) {
             console.log(error)
         return (<div>SomeError has Happened,Contact Admin</div>) }

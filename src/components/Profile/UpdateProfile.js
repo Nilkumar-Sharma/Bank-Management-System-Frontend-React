@@ -4,6 +4,7 @@ import MyButton from '../Shared/MyButton/MyButton';
 import {connect} from 'react-redux'
 import './UpdateProfile.scss'
 import * as actionTypes from '../../store/actions/actionTypes'
+import { getProfileFromApi, updateProfileFromApi} from '../../store/actions/actionCreators'
 /**
  * As a Customer, I should be able to login so that I can update my account details in the system 
  * Acceptance criteria: When the Customer logs in, he should be able to update his account details.
@@ -32,16 +33,20 @@ class UpdateProfile extends Component{
     handleUpdateClick = ()=>{
         this.props.onChangeProfile(this.state);
     }
+    componentDidMount() {
+        this.props.getUserDetails();
+        
+        
+    }
     render() {
         try{
         return (<div>
-            {this.state.Name}
             <div className="container profile-container border shadow pr-5">
                 <div className="header">
                     Update Profile Page
                 </div>
                 <div className="row mt-5 ">
-                <div className="update-profile-inputfield  col-md-4 col-sm-6">
+                    <div className="update-profile-inputfield  col-md-4 col-sm-6">
                     <InputField Label="Name" name="UserName" value={this.props.user.UserName} changes={this.handleInputField}></InputField>
                 </div>
                 <div className="update-profile-inputfield  col-md-4 col-sm-6">
@@ -79,6 +84,7 @@ class UpdateProfile extends Component{
     }
 }
 const mapStateToProps = state => {
+    console.log('mstop')
     console.log(state.user)
     return {
         user:state.user
@@ -86,7 +92,8 @@ const mapStateToProps = state => {
 }
 const mapPropToState = dispatch => {
     return {
-        onChangeProfile: (payload) => dispatch({ type: actionTypes.UPDATE_PROFILE_INITIATE, payload })
+        onChangeProfile: (payload) => dispatch(updateProfileFromApi(payload)),
+        getUserDetails: () => dispatch(getProfileFromApi())
     }
-}
+}   
 export default  connect(mapStateToProps,mapPropToState)(UpdateProfile);

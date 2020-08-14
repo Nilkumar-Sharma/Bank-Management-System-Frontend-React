@@ -21,11 +21,14 @@ class InputField extends Component {
             value: this.props.value || "",
             errors: [],
             isDirty: false,
-
         }
-        // this.props.PlaceHolder = this.props.Label;
-
     }
+    componentDidUpdate(prevProps) {
+        if(this.state.value != this.props.value && (!this.state.isDirty))
+       this.setState({value:this.props.value,isDirty:true})
+        
+    }
+
     handleChange(event) {
         console.log(this.props.name)
         //run validation and return error if any else error is null

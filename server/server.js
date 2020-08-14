@@ -89,3 +89,5 @@ require('./controllers/user/userApi')(app)
 app.listen(PORT, () => {
     console.log(`App launched on ${PORT}`);
 });
+
+module.exports=app

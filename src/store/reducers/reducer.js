@@ -40,15 +40,13 @@ const rootReducer = (state = initialState, action) => {
         case actionTypes.LOAN_APPLY_SUCCESS:
             return {...state,loans:[...state.loans,action.payload]}
         case actionTypes.UPDATE_PROFILE_SUCCESS:
-            return { ...state, user:{...state.user,...action.payload}}
+            return { ...state, user:{...action.payload}}
         case actionTypes.SHOW_ALERT_SHOW:
             return { ...state, showAlert: action.payload.payload }
         case actionTypes.AUTH_SUCCESS:
             return {...state,loggedIn:true}
         case actionTypes.SHOW_ALERT_HIDE:
             return { ...state, showAlert:{...state.showAlert,typ:'hide'} }
-        // case "ShowAlert":
-        //     return {...state,showAlert:action.payload}
         case "LogMeIn":
             return { ...state, loggedIn: true }
         case "LogMeOut":

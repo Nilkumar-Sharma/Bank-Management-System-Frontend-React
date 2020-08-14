@@ -1,5 +1,6 @@
 // module.exports =
-const loann=require('../../models/loan')
+const loann = require('../../models/loan')
+const jwtAuth = require('../../middleware/jwtAuthenticationMiddleWare')
 export const express =
     (app) => {
             app.get('/s',   (req, res) => {
@@ -13,7 +14,7 @@ export const express =
                 })
             });
 
-    app.get(`${process.env.API_URL}/loan`, (req, res) => {
+        app.get(`${process.env.API_URL}/loan`, jwtAuth,(req, res) => {
         try {
             loann.find().then(x => {
                 res.status(200).send(x)

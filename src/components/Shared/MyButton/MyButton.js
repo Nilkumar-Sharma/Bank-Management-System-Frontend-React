@@ -18,12 +18,11 @@ const MyButton = (props = {
     //     value: "",
     //     classes: "btn btn-secondary"
     // }
-    // constructor(props) {
+    // constructor(props) {us
     //     super(props);
     //     console.log(props)
     // }
     // render() {
-    console.log(props.classes)
         try{
             return <button className={props.classes ||"btn btn-secondary"} onClick={props.clicked} value={props.value} >{props.label}</button>
         } catch (error) {

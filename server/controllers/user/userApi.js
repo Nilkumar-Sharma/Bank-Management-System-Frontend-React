@@ -20,6 +20,15 @@ module.exports = (app) => {
         })
     })
 
+    app.get(`${process.env.API_URL}/user`, (req, res) => {
+        const body = { ...req.body }
+        userM.find({ _id: "5f34cda3587b313630527de7"}).then(( user) => {
+            if (user) {
+                res.send(user[0])
+            } 
+        }).catch(error => res.send({ msg: "Unable to get new User" }))
+    })
+
     app.post(`${process.env.API_URL}/user`, (req, res) => {
         const body ={...req.body}
         userM.create(body, (err, user) => {
@@ -29,5 +38,15 @@ module.exports = (app) => {
                 res.send(user)
             }
         })
+    })
+
+    app.patch(`${process.env.API_URL}/user`, (req, res) => {
+        const body = { ...req.body }
+        userM.findOneAndUpdate({ _id: "5f34cda3587b313630527de7" }, { ...req.body })
+            .then((user) => {
+            if (user) {
+                res.send(user)
+            }
+        }).catch(error => res.send({ msg: "Unable to get new User" }))
     })
 }
